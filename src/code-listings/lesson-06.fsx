@@ -1,3 +1,6 @@
+#I @"C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.0"
+#r "System.Windows.Forms.dll"
+
 // Listing 6.1
 let name = "isaac"
 name = "kate"
