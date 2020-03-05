@@ -45,6 +45,8 @@ let estimateAges(familyName, age1, age2, age3) =
     sprintf "Average age for family %s is %d" familyName averageAge
 
 // Listing 4.8
+#I @"C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.0"
+#r "System.Windows.Forms.dll"
 open System
 open System.Net
 open System.Windows.Forms
@@ -57,6 +59,13 @@ form.Controls.Add browser
 form.Show()
 
 // Solution to Now You Try
+// Listing 4.8
+#I @"C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.0"
+#r "System.Windows.Forms.dll"
+open System
+open System.Net
+open System.Windows.Forms
+
 let showBrowser uri =
     let browser =
         let fsharpOrg =
