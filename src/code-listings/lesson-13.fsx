@@ -17,7 +17,10 @@ let whereCustomersAreOver35 customers =
 
 let isOver35 customer = customer.Age > 35
 
+let isOver age customer = customer.Age > age
+
 customers |> where isOver35
+customers |> where (isOver 35)
 customers |> where (fun customer -> customer.Age > 35)
 
 
