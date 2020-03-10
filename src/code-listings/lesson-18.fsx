@@ -94,14 +94,14 @@ let rules : Rule list =
 
 // Listing 18.9
 let validateManual (rules: Rule list) word =
-    let passed, error = rules.[0] word
-    if not passed then false, error
+    let isPassed, errorMessage = rules.[0] word
+    if not isPassed then false, errorMessage
     else
-        let passed, error = rules.[1] word
-        if not passed then false, error
+        let isPassed, errorMessage = rules.[1] word
+        if not isPassed then false, errorMessage
         else
-            let passed, error = rules.[2] word
-            if not passed then false, error
+            let isPassed, errorMessage = rules.[2] word
+            if not isPassed then false, errorMessage
             else true, ""
 
 // Listing 18.10
@@ -109,11 +109,12 @@ let buildValidator (rules : Rule list) =
     rules
     |> List.reduce(fun firstRule secondRule ->
         fun word ->
-            let passed, error = firstRule word
-            if passed then
-                let passed, error = secondRule word
-                if passed then true, "" else false, error
-            else false, error)
+            let isPassed, errorMessage = firstRule word
+            if isPassed then
+                let isPassed, errorMessage = secondRule word
+                if isPassed then true, ""
+                else false, errorMessage
+            else false, errorMessage)
 
 let validate = buildValidator rules
 let word = "HELLO FrOM F#"
