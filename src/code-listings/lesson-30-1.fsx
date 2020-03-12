@@ -1,15 +1,19 @@
 //  Listing 30.1
-#I @"..\..\packages"
-#r @"FSharp.Data\lib\net40\FSharp.Data.dll"
-#r @"Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll"
+#I @"..\..\.paket\load\netcoreapp2.1\"
+#load @"FSharp.Data.fsx"
+#load @"Newtonsoft.Json.fsx"
 
 open FSharp.Data
-type Football = CsvProvider< @"..\..\data\FootballResults.csv">
-let data = Football.GetSample().Rows |> Seq.toArray
+[<Literal>]
+let DATASOUCE_PATH = @"..\..\data\FootballResults.csv"
+type Football = CsvProvider< DATASOUCE_PATH >
+let data = Football.GetSample().Rows |> Seq.toArray 
 
 //  Listing 30.2
-#r @"Google.DataTable.Net.Wrapper\lib\Google.DataTable.Net.Wrapper.dll"
-#r @"XPlot.GoogleCharts\lib\net45\XPlot.GoogleCharts.dll"
+#I @"..\..\.paket\load\netcoreapp2.1\"
+#load @"Google.DataTable.Net.Wrapper.fsx"
+#load @"XPlot.GoogleCharts.fsx"
+
 open XPlot.GoogleCharts
 
 data
