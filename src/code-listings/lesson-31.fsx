@@ -1,16 +1,20 @@
 // Listing 31.1
 #I @"..\..\.paket\load\netcoreapp2.1\"
 #load @"FSharp.Data.fsx"
-open FSharp.Data
-
-type TvListing = JsonProvider<"http://www.bbc.co.uk/programmes/genres/comedy/schedules/upcoming.json">
-let tvListing = TvListing.GetSample()
-let title = tvListing.Broadcasts.[0].Programme.DisplayTitles.Title
-
-// Now you try
 #load @"Google.DataTable.Net.Wrapper.fsx"
 #load @"XPlot.GoogleCharts.fsx"
+open FSharp.Data
 open XPlot.GoogleCharts
+
+type Customers = JsonProvider<"https://services.odata.org/V2/Northwind/Northwind.svc/Customers?$format=json">
+let customers = Customers.GetSample()
+
+customers.D.Results
+|> Seq.map( fun row -> row.Country,row.CompanyName)
+|> Chart.Table
+|> Chart.Show
+
+// Now you try
 
 type Films = HtmlProvider<"https://en.wikipedia.org/wiki/Robert_De_Niro_filmography">
 let deNiro = Films.GetSample()
