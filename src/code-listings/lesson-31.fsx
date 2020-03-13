@@ -11,7 +11,13 @@ let customers = Customers.GetSample()
 
 customers.D.Results
 |> Seq.map( fun row -> row.Country,row.CompanyName)
+|> Seq.sort
 |> Chart.Table
+|> Chart.WithOptions(
+    Options( title="Northwind Customers", 
+             showRowNumber = true )
+    )
+|> Chart.WithLabels ["Country"; "Company Name"]
 |> Chart.Show
 
 // Now you try
